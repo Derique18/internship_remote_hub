@@ -1,3 +1,4 @@
 Learn Git branching 
 Understand Git history 
-Become comfortable using Git Bash 
+Become comfortable using Git Bash
+--temp txts 
