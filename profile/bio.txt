@@ -1,0 +1,4 @@
+I am a Software Engineering Student
+I enjoy developing programs 
+I am currently expanding my expertise in command-line development
+I enjoy learning here 
