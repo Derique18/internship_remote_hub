@@ -1,29 +1,51 @@
-// Currency Conversion Engine
+// Import the built-in Node.js readline module
+// This allows us to accept user input from the terminal.
+import * as readline from "readline";
 
-// Explicitly typed variables
-const startingBalance: number = 500;
-const conversionRate: number = 1600;
-const transactionFeeRate: number = 0.02;
+// Create a readline interface that connects
+// the terminal input and output streams.
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-// Calculated converted amount
-const convertedAmount: number = startingBalance * conversionRate;
-// Calculated transaction fee
-const transactionFee: number = convertedAmount * transactionFeeRate;
+// Ask the user to enter their starting balance in USD.
+rl.question("Enter your starting balance (USD): ", (balanceInput: string) => {
 
-// Final amount after deducting the transaction fee
-const finalAmount: number = convertedAmount - transactionFee;
+    // After receiving the balance, ask for the exchange rate.
+    rl.question("Enter the exchange rate: ", (rateInput: string) => {
 
+        // Convert the user's text input into numbers.
+        const startingBalance: number = Number(balanceInput);
+        const conversionRate: number = Number(rateInput);
 
-// Display receipt
-console.log("====================================");
-console.log("       Currency Receipt");
-console.log("====================================");
-console.log(`Starting Balance: $${startingBalance}`);
-console.log(`Exchange Rate: 1 USD = ${conversionRate} NGN`);
-console.log("------------------------------------");
-console.log(`Converted Amount: ₦${convertedAmount.toLocaleString()}`);
-console.log(`Transaction Fee (2%): ₦${transactionFee.toLocaleString()}`);
-console.log(`Final Amount: ₦${finalAmount.toLocaleString()}`);
-console.log("====================================");
-console.log("Thank you for using our converter!");
+        // Set the transaction fee rate to 2%.
+        const transactionFeeRate: number = 0.02;
 
+        // Calculate the converted currency amount.
+        const convertedAmount: number = startingBalance * conversionRate;
+
+        // Calculate the 2% transaction fee.
+        const transactionFee: number = convertedAmount * transactionFeeRate;
+
+        // Calculate the final amount after deducting the fee.
+        const finalAmount: number = convertedAmount - transactionFee;
+
+        // Display a formatted transaction receipt.
+        console.log("\n====================================");
+        console.log("        Currency Receipt");
+        console.log("====================================");
+        console.log(`Starting Balance: $${startingBalance}`);
+        console.log(`Exchange Rate: 1 USD = ${conversionRate} NGN`);
+        console.log("------------------------------------");
+        console.log(`Converted Amount: ₦${convertedAmount.toLocaleString()}`);
+        console.log(`Transaction Fee (2%): ₦${transactionFee.toLocaleString()}`);
+        console.log(`Final Amount: ₦${finalAmount.toLocaleString()}`);
+        console.log("====================================");
+        console.log("Thank you for using our converter!");
+
+        // Close the readline interface after the program finishes.
+        rl.close();
+    });
+
+});

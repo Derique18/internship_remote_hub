@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Derique18/internship_remote_hub/issues"
   },
-  "homepage": "https://github.com/Derique18/internship_remote_hub#readme"
+  "homepage": "https://github.com/Derique18/internship_remote_hub#readme",
+  "devDependencies": {
+    "@types/node": "^26.1.1"
+  }
 }
