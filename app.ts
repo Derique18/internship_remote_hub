@@ -16,6 +16,9 @@ const conversionRate: number = 1600;
 // Set the transaction fee rate to 2%.
 const transactionFeeRate: number = 0.02;
 
+// Function that performs one conversion 
+function startConversion(): void {
+
 // Ask the user to enter their starting balance in USD.
 rl.question("Enter your starting balance (USD): ", (balanceInput: string) => {
 
@@ -45,5 +48,42 @@ rl.question("Enter your starting balance (USD): ", (balanceInput: string) => {
     console.log("Thank you for using our converter!");
 
     // Close the readline interface after the program finishes.
-    rl.close();
-});
+    // Ask the user if they want to perform another conversion.
+        rl.question("\nDo you want to perform another conversion? (Y/N): ", (answer: string) => {
+
+            // Convert the answer to lowercase so both Y/y and N/n work.
+            answer = answer.toLowerCase();
+
+            // If the user enters Y, start the process again.
+            if (answer === "y") {
+
+                console.log();
+
+                startConversion();
+
+            }
+            // If the user enters N, close the program.
+            else if (answer === "n") {
+
+                console.log("\nThank you for using our currency converter. Goodbye!");
+
+                rl.close();
+
+            }
+            // If the user enters anything else.
+            else {
+
+                console.log("\nInvalid option. Please enter Y or N.");
+
+                startConversion();
+
+            }
+
+        });
+
+    });
+
+}
+
+// Start the first conversion.
+startConversion();
